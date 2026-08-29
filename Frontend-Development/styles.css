@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap");
+
+body {
+  font-family: "Source Sans 3", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #faf7f2;
+}
+
+h1,
+h2,
+h3,
+.navbar-brand {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.hero {
+  background: linear-gradient(135deg, #8b1e1e, #c0392b);
+}
+
+.recipe-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.recipe-image {
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.ingredient-list li,
+.step-list li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  margin-top: auto;
+}

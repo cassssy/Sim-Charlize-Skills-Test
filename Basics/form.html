@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+</head>
+<body>
+  <h1>Site Feedback</h1>
+  <p><a href="index.html">&larr; Back to Home</a></p>
+
+  <form id="feedback-form">
+    <p>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name">
+    </p>
+
+    <p>
+      <label for="email">Email: <span aria-hidden="true">*</span></label><br>
+      <input type="email" id="email" name="email" required>
+    </p>
+
+    <p>
+      <label for="subject">Subject:</label><br>
+      <input type="text" id="subject" name="subject">
+    </p>
+
+    <p>
+      <label for="message">Message: <span aria-hidden="true">*</span></label><br>
+      <textarea id="message" name="message" rows="5" cols="40" required></textarea>
+    </p>
+
+    <p id="form-message" role="status" aria-live="polite"></p>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("feedback-form");
+    const messageBox = document.getElementById("form-message");
+
+    function isValidEmail(value) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(value.trim());
+    }
+
+    function isValidMessage(value) {
+      return value.trim().length >= 10;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const emailValid = isValidEmail(email);
+      const messageValid = isValidMessage(message);
+
+      if (emailValid && messageValid) {
+        form.reset();
+        messageBox.textContent = "Success!";
+        messageBox.style.color = "green";
+      } else {
+        messageBox.textContent = "Error: please enter a valid email and message.";
+        messageBox.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
